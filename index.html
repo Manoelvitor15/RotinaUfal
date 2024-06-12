@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Estudos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            height: 90vh;
+            overflow-y: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td:nth-child(1) {
+            background-color: #e0f7fa;
+            font-weight: bold;
+        }
+
+        td:nth-child(4) {
+            background-color: #fff3e0;
+        }
+
+        .subject-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .subject-input:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        .subject-input.completed {
+            text-decoration: line-through;
+            color: gray;
+            background-color: #d3ffd3;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        .reset-button {
+            background-color: #f44336;
+            margin-top: 20px;
+        }
+
+        .reset-button:hover {
+            background-color: #d32f2f;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .subject-input {
+                width: calc(100% - 20px);
+                padding: 10px;
+                margin: 5px 0;
+                font-size: 14px;
+            }
+            button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Plano de Estudos</h2>
+
+    <table id="studyTable">
+        <thead>
+            <tr>
+                <th>Dia</th>
+                <th>Assuntos</th>
+                <th>Resolução de Questões</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Segunda</td>
+                <td>
+                    <input class="subject-input" type="text" id="mondaySubject1" placeholder="Assunto 1"><br>
+                    <input class="subject-input" type="text" id="mondaySubject2" placeholder="Assunto 2"><br>
+                    <input class="subject-input" type="text" id="mondaySubject3" placeholder="Assunto 3"><br>
+                    <input class="subject-input" type="text" id="mondaySubject4" placeholder="Assunto 4">
+                </td>
+                <td>
+                    <input class="subject-input" type="text" id="mondayQuestions1" placeholder="Questão 1"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions2" placeholder="Questão 2"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions3" placeholder="Questão 3"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions4" placeholder="Questão 4">
+                </td>
+                <td>
+                    <button onclick="markSubjectCompleted('monday', 1)">Concluir Assunto 1</button><br>
+                    <button onclick="markSubjectCompleted('monday', 2)">Concluir Assunto 2</button><br>
+                    <button onclick="markSubjectCompleted('monday', 3)">Concluir Assunto 3</button><br>
+                    <button onclick="markSubjectCompleted('monday', 4)">Concluir Assunto 4</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Terça</td>
+                <td>
+                    <input class="subject-input" type="text" id="mondaySubject1" placeholder="Assunto 1"><br>
+                    <input class="subject-input" type="text" id="mondaySubject2" placeholder="Assunto 2"><br>
+                    <input class="subject-input" type="text" id="mondaySubject3" placeholder="Assunto 3"><br>
+                    <input class="subject-input" type="text" id="mondaySubject4" placeholder="Assunto 4">
+                </td>
+                <td>
+                    <input class="subject-input" type="text" id="mondayQuestions1" placeholder="Questão 1"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions2" placeholder="Questão 2"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions3" placeholder="Questão 3"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions4" placeholder="Questão 4">
+                </td>
+                <td>
+                    <button onclick="markSubjectCompleted('monday', 1)">Concluir Assunto 1</button><br>
+                    <button onclick="markSubjectCompleted('monday', 2)">Concluir Assunto 2</button><br>
+                    <button onclick="markSubjectCompleted('monday', 3)">Concluir Assunto 3</button><br>
+                    <button onclick="markSubjectCompleted('monday', 4)">Concluir Assunto 4</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Quarta</td>
+                <td>
+                    <input class="subject-input" type="text" id="mondaySubject1" placeholder="Assunto 1"><br>
+                    <input class="subject-input" type="text" id="mondaySubject2" placeholder="Assunto 2"><br>
+                    <input class="subject-input" type="text" id="mondaySubject3" placeholder="Assunto 3"><br>
+                    <input class="subject-input" type="text" id="mondaySubject4" placeholder="Assunto 4">
+                </td>
+                <td>
+                    <input class="subject-input" type="text" id="mondayQuestions1" placeholder="Questão 1"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions2" placeholder="Questão 2"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions3" placeholder="Questão 3"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions4" placeholder="Questão 4">
+                </td>
+                <td>
+                    <button onclick="markSubjectCompleted('monday', 1)">Concluir Assunto 1</button><br>
+                    <button onclick="markSubjectCompleted('monday', 2)">Concluir Assunto 2</button><br>
+                    <button onclick="markSubjectCompleted('monday', 3)">Concluir Assunto 3</button><br>
+                    <button onclick="markSubjectCompleted('monday', 4)">Concluir Assunto 4</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Quinta</td>
+                <td>
+                    <input class="subject-input" type="text" id="mondaySubject1" placeholder="Assunto 1"><br>
+                    <input class="subject-input" type="text" id="mondaySubject2" placeholder="Assunto 2"><br>
+                    <input class="subject-input" type="text" id="mondaySubject3" placeholder="Assunto 3"><br>
+                    <input class="subject-input" type="text" id="mondaySubject4" placeholder="Assunto 4">
+                </td>
+                <td>
+                    <input class="subject-input" type="text" id="mondayQuestions1" placeholder="Questão 1"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions2" placeholder="Questão 2"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions3" placeholder="Questão 3"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions4" placeholder="Questão 4">
+                </td>
+                <td>
+                    <button onclick="markSubjectCompleted('monday', 1)">Concluir Assunto 1</button><br>
+                    <button onclick="markSubjectCompleted('monday', 2)">Concluir Assunto 2</button><br>
+                    <button onclick="markSubjectCompleted('monday', 3)">Concluir Assunto 3</button><br>
+                    <button onclick="markSubjectCompleted('monday', 4)">Concluir Assunto 4</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Sexta</td>
+                <td>
+                    <input class="subject-input" type="text" id="mondaySubject1" placeholder="Assunto 1"><br>
+                    <input class="subject-input" type="text" id="mondaySubject2" placeholder="Assunto 2"><br>
+                    <input class="subject-input" type="text" id="mondaySubject3" placeholder="Assunto 3"><br>
+                    <input class="subject-input" type="text" id="mondaySubject4" placeholder="Assunto 4">
+                </td>
+                <td>
+                    <input class="subject-input" type="text" id="mondayQuestions1" placeholder="Questão 1"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions2" placeholder="Questão 2"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions3" placeholder="Questão 3"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions4" placeholder="Questão 4">
+                </td>
+                <td>
+                    <button onclick="markSubjectCompleted('monday', 1)">Concluir Assunto 1</button><br>
+                    <button onclick="markSubjectCompleted('monday', 2)">Concluir Assunto 2</button><br>
+                    <button onclick="markSubjectCompleted('monday', 3)">Concluir Assunto 3</button><br>
+                    <button onclick="markSubjectCompleted('monday', 4)">Concluir Assunto 4</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Sábado</td>
+                <td>
+                    <input class="subject-input" type="text" id="mondaySubject1" placeholder="Assunto 1"><br>
+                    <input class="subject-input" type="text" id="mondaySubject2" placeholder="Assunto 2"><br>
+                    <input class="subject-input" type="text" id="mondaySubject3" placeholder="Assunto 3"><br>
+                    <input class="subject-input" type="text" id="mondaySubject4" placeholder="Assunto 4">
+                </td>
+                <td>
+                    <input class="subject-input" type="text" id="mondayQuestions1" placeholder="Questão 1"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions2" placeholder="Questão 2"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions3" placeholder="Questão 3"><br>
+                    <input class="subject-input" type="text" id="mondayQuestions4" placeholder="Questão 4">
+                </td>
+                <td>
+                    <button onclick="markSubjectCompleted('monday', 1)">Concluir Assunto 1</button><br>
+                    <button onclick="markSubjectCompleted('monday', 2)">Concluir Assunto 2</button><br>
+                    <button onclick="markSubjectCompleted('monday', 3)">Concluir Assunto 3</button><br>
+                    <button onclick="markSubjectCompleted('monday', 4)">Concluir Assunto 4</button>
+                </td>
+            </tr>
+
+            <!-- Adicione mais linhas para os outros dias -->
+        </tbody>
+    </table>
+    
+    <button class="reset-button" onclick="resetPlan()">Resetar Plano de Estudos</button>
+</div>
+
+<script>
+    // Carregar dados do armazenamento local ao carregar a página
+    window.onload = function() {
+        loadStoredData();
+    };
+
+    function loadStoredData() {
+        // Carregar dados para cada dia da semana
+        for (let i = 0; i < localStorage.length; i++) {
+            let day = localStorage.key(i);
+            let data = JSON.parse(localStorage.getItem(day));
+            if (data) {
+                for (let item of data) {
+                    let element = document.getElementById(item.id);
+                    if (element) {
+                        element.value = item.value;
+                        if (item.completed) {
+                            element.classList.add("completed");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function markSubjectCompleted(day, subjectNumber) {
+        let subjectInput = document.getElementById(day + 'Subject' + subjectNumber);
+        subjectInput.classList.toggle("completed");
+        saveDataToLocalStorage();
+    }
+
+    function saveDataToLocalStorage() {
+        let allSubjects = document.querySelectorAll('.subject-input');
+        let data = [];
+        allSubjects.forEach(function(subject) {
+            let subjectData = {
+                id: subject.id,
+                value: subject.value,
+                completed: subject.classList.contains("completed")
+            };
+            data.push(subjectData);
+        });
+        localStorage.clear(); // Limpar armazenamento local
+        // Armazenar dados atualizados
+        data.forEach(function(subjectData) {
+            localStorage.setItem(subjectData.id, JSON.stringify(subjectData));
+        });
+    }
+
+    function resetPlan() {
+        localStorage.clear(); // Limpar armazenamento local
+        // Resetar campos de entrada na página
+        let allSubjects = document.querySelectorAll('.subject-input');
+        allSubjects.forEach(function(subject) {
+            subject.value = '';
+            subject.classList.remove("completed");
+        });
+    }
+</script>
+
+</body>
+</html>
+
